@@ -14,7 +14,7 @@
 | 역할 | 서버 QA 파트 리드 |
 | 대상 | 서버 정기배포 (월 단위 Sprint) |
 | 주요 업무 | QA 일감 배분, 진행 현황 모니터링, 테스트케이스 설계·리뷰, API 검증, 결과 리포트 작성 |
-| 사용 도구 | JIRA (Dashboard / Filter), ONE tests (TC 관리), Postman (API 검증), Excel (지표 분석) |
+| 사용 도구 | JIRA (Dashboard / Filter), 사내 TC 관리 도구, Postman (API 검증), Excel (지표 분석) |
 
 ### 업무 흐름
 
@@ -30,7 +30,7 @@
 
 ## 1. 서버 정기배포 JIRA Dashboard
 
-<img width="461" height="286" alt="서버정기배포 Dashboard" src="https://github.com/user-attachments/assets/f16b6224-686d-4e7b-bda0-2d438c10e389" />
+<img width="461" height="286" alt="서버정기배포 Dashboard" src="https://github.com/user-attachments/assets/0a7e5bdc-93a8-47cb-b8bd-ff95e94e39d2" />
 
 정기배포 일감을 한눈에 관리하기 위해 JIRA Filter 기반 Dashboard를 구성했습니다.
 
@@ -48,23 +48,23 @@
 
 <img width="855" height="255" alt="정기배포 Jira 일감 테스트케이스" src="https://github.com/user-attachments/assets/acdd192f-e0af-40ca-bcd9-0f0cff616cbc" />
 
-JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 ONE tests로 검증 결과를 연결해 관리했습니다.
+JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 사내 TC 관리 도구로 검증 결과를 연결해 관리했습니다.
 
 - **요구사항 ID ↔ 테스트케이스 ID 매핑**으로 추적성(Traceability) 확보
 - **품질지표 / 중요도(상·중·하)** 를 TC마다 지정하여 우선순위 기반 검증
 - **사전조건** 을 통신사(SKT / KT) × 상품 유형(게임 / 앱) × 데이터 조건으로 조합하여 커버리지 확보
 - **API 단위 절차** : API 호출 → Response Result 확인 → 응답 필드(binaryInfo 등) 검증
-- **ONE tests 검증 결과 링크** 로 증적(Evidence) 관리 및 Pass/Fail 결과 기록
+- **TC 관리 도구의 검증 결과 링크** 로 증적(Evidence) 관리 및 Pass/Fail 결과 기록
 
-> 예시) `[CCS] Android 14 앱 설치 사전 동의 프로세스 반영` — API 응답의 `applicationLabel` 노출 여부 검증
+> 예시) `Android 14 앱 설치 사전 동의 프로세스 반영` — API 응답의 `applicationLabel` 노출 여부 검증
 >
-> ※ API 명칭 및 사내 링크는 보안상 모자이크 처리
+> ※ 서비스명, API 명칭, 사내 링크 및 TC 관리 도구명은 보안상 모자이크 처리
 
 ---
 
 ## 3. 정기배포 결과 Report
 
-<img width="1367" height="792" alt="정기배포 Report" src="https://github.com/user-attachments/assets/e4963efd-1dd5-48f4-a310-7a838018c434" />
+<img width="1367" height="792" alt="정기배포 Report" src="https://github.com/user-attachments/assets/2b6e4791-6804-4fa2-bd00-a724fc3faa13" />
 
 배포 완료 후 검증 결과와 품질 지표를 정리하여 유관 부서에 공유했습니다.
 
@@ -72,8 +72,8 @@ JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 ONE tests
 
 | 구분 | Total | Pass | Fail | 검증대상제외 |
 | --- | :---: | :---: | :---: | :---: |
-| SAC | 16 | 6 | 0 | 10 |
-| Tenant | 27 | 24 | 0 | 3 |
+| 서비스 A | 16 | 6 | 0 | 10 |
+| 서비스 B | 27 | 24 | 0 | 3 |
 | **총** | **43** | **30** | **0** | **13** |
 
 - 검증대상제외 13건 : 배치 및 개발자 자체 검증 항목
@@ -86,16 +86,18 @@ JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 ONE tests
 - **파트별 개발완료율** : 파트별 지연 구간을 파악하여 일정 리스크를 사전에 공유
 
 > 단순 Pass/Fail 결과뿐 아니라 **초기 Pass율·개발완료율** 지표를 함께 제공하여, 개발 파트의 품질 개선과 일정 관리에 활용될 수 있도록 했습니다.
+>
+> ※ 서비스명 및 개발 파트명은 보안상 모자이크 처리
 
 ---
 
 ## 4. Postman API 통합 검증
 
-<img width="2051" height="1293" alt="Postman API 통합 Collection" src="https://github.com/user-attachments/assets/902411f6-9054-4c6b-ad27-a4e2a76bc22f" />
+<img width="2051" height="1293" alt="Postman API 통합 Collection" src="https://github.com/user-attachments/assets/a80906c3-08b7-4883-90b4-2314b1bdecc1" />
 
 서버 파트에서 검증하는 API를 하나의 Postman Workspace로 통합하여 파트원 누구나 동일한 기준으로 API를 검증할 수 있도록 구성했습니다.
 
-- **서비스 단위 Collection 구성** : CCS / SAC / MKT / EC / CMS 등 서버 서비스별로 Collection을 분리
+- **서비스 단위 Collection 구성** : 서버 서비스별로 Collection을 분리
 - **Interface 버전별 관리** : 동일 서비스 내에서도 Interface 버전(4.0 / 6.0)별 폴더로 구분하여 버전 간 차이 검증
 - **기능 단위 폴더 구조** : API 문서 목차 기준으로 기능별 폴더를 구성하고, 각 API를 GET / POST Request로 등록
 - **Query Params 기반 조건 검증** : 파라미터 값을 조합하여 TC의 사전조건(통신사, 상품 유형, 성인 여부 등)을 재현하고 Response 확인
@@ -103,7 +105,7 @@ JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 ONE tests
 
 > 파트 리드로서 흩어져 있던 개인별 API Request를 통합·표준화하여, 신규 파트원 온보딩과 정기배포 시 API 검증을 빠르게 진행할 수 있도록 했습니다.
 >
-> ※ 서버 URL, API 명칭, 워크스페이스명은 보안상 모자이크 처리
+> ※ 서버 URL, 서비스명, API 명칭, 워크스페이스명은 보안상 모자이크 처리
 
 ---
 
