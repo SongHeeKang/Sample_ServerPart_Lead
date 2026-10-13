@@ -38,7 +38,7 @@
 
 ## 1. 서버 정기배포 JIRA Dashboard
 
-<img width="461" height="286" alt="서버정기배포 Dashboard" src="https://github.com/user-attachments/assets/0a7e5bdc-93a8-47cb-b8bd-ff95e94e39d2" />
+<img width="461" height="286" alt="서버정기배포 Dashboard" src="docs/screenshots/01-release-dashboard.png" />
 
 정기배포 일감을 한눈에 관리하기 위해 JIRA Filter 기반 Dashboard를 구성했습니다.
 
@@ -54,7 +54,7 @@
 
 ## 2. 정기배포 JIRA 일감 기반 테스트케이스
 
-<img width="855" height="255" alt="정기배포 Jira 일감 테스트케이스" src="https://github.com/user-attachments/assets/acdd192f-e0af-40ca-bcd9-0f0cff616cbc" />
+<img width="855" height="255" alt="정기배포 Jira 일감 테스트케이스" src="docs/screenshots/02-release-jira-testcases.png" />
 
 JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 사내 TC 관리 도구로 검증 결과를 연결해 관리했습니다.
 
@@ -70,7 +70,7 @@ JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 사내 TC
 
 ## 3. 정기배포 결과 Report
 
-<img width="1367" height="792" alt="정기배포 Report" src="https://github.com/user-attachments/assets/2b6e4791-6804-4fa2-bd00-a724fc3faa13" />
+<img width="1367" height="792" alt="정기배포 Report" src="docs/screenshots/03-release-report.png" />
 
 배포 완료 후 검증 결과와 품질 지표를 정리하여 유관 부서에 공유했습니다.
 
@@ -97,7 +97,7 @@ JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 사내 TC
 
 ## 4. Postman API 통합 검증
 
-<img width="2051" height="1293" alt="Postman API 통합 Collection" src="https://github.com/user-attachments/assets/a80906c3-08b7-4883-90b4-2314b1bdecc1" />
+<img width="2051" height="1293" alt="Postman API 통합 Collection" src="docs/screenshots/04-postman-integrated-collection.png" />
 
 서버 파트에서 검증하는 API를 하나의 Postman Workspace로 통합하여 파트원 누구나 동일한 기준으로 API를 검증할 수 있도록 구성했습니다.
 
