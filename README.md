@@ -46,7 +46,7 @@
 
 ## 2. 정기배포 JIRA 일감 기반 테스트케이스
 
-<img width="855" height="255" alt="정기배포 Jira 일감 테스트케이스" src="https://github.com/user-attachments/assets/80886267-2b1b-4f00-9e73-308932d74386" />
+<img width="855" height="255" alt="정기배포 Jira 일감 테스트케이스" src="https://github.com/user-attachments/assets/acdd192f-e0af-40ca-bcd9-0f0cff616cbc" />
 
 JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 ONE tests로 검증 결과를 연결해 관리했습니다.
 
@@ -56,7 +56,9 @@ JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 ONE tests
 - **API 단위 절차** : API 호출 → Response Result 확인 → 응답 필드(binaryInfo 등) 검증
 - **ONE tests 검증 결과 링크** 로 증적(Evidence) 관리 및 Pass/Fail 결과 기록
 
-> 예시) `[CCS] Android 14 앱 설치 사전 동의 프로세스 반영` — 상품 리스트 조회 API의 `applicationLabel` 응답 여부 검증
+> 예시) `[CCS] Android 14 앱 설치 사전 동의 프로세스 반영` — API 응답의 `applicationLabel` 노출 여부 검증
+>
+> ※ API 명칭 및 사내 링크는 보안상 모자이크 처리
 
 ---
 
@@ -89,9 +91,19 @@ JIRA 요구사항(일감) 단위로 테스트케이스를 설계하고 ONE tests
 
 ## 4. Postman API 통합 검증
 
-> 🚧 추가 예정 — Postman Collection으로 통합한 API 검증 자료
+<img width="2051" height="1293" alt="Postman API 통합 Collection" src="https://github.com/user-attachments/assets/902411f6-9054-4c6b-ad27-a4e2a76bc22f" />
 
-<!-- <img alt="Postman 통합" src="이미지 URL" /> -->
+서버 파트에서 검증하는 API를 하나의 Postman Workspace로 통합하여 파트원 누구나 동일한 기준으로 API를 검증할 수 있도록 구성했습니다.
+
+- **서비스 단위 Collection 구성** : CCS / SAC / MKT / EC / CMS 등 서버 서비스별로 Collection을 분리
+- **Interface 버전별 관리** : 동일 서비스 내에서도 Interface 버전(4.0 / 6.0)별 폴더로 구분하여 버전 간 차이 검증
+- **기능 단위 폴더 구조** : API 문서 목차 기준으로 기능별 폴더를 구성하고, 각 API를 GET / POST Request로 등록
+- **Query Params 기반 조건 검증** : 파라미터 값을 조합하여 TC의 사전조건(통신사, 상품 유형, 성인 여부 등)을 재현하고 Response 확인
+- **정기배포 검증 연계** : JIRA 일감별 TC의 API 호출 절차를 Postman Request로 바로 수행하여 검증 시간 단축
+
+> 파트 리드로서 흩어져 있던 개인별 API Request를 통합·표준화하여, 신규 파트원 온보딩과 정기배포 시 API 검증을 빠르게 진행할 수 있도록 했습니다.
+>
+> ※ 서버 URL, API 명칭, 워크스페이스명은 보안상 모자이크 처리
 
 ---
 
